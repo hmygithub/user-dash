@@ -14,6 +14,13 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
     })
   }
 
+  function pageChangeHandler(page) {
+    dispatch(routerRedux.push({//切换路由
+      pathname: '/users',
+      query: { page }
+    }));
+  }
+
   function editHandler(id, values) {
     dispatch({
       type: 'users/patch',
@@ -21,12 +28,6 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
     })
   }
 
-  function pageChangeHandler(page) {
-    dispatch(routerRedux.push({//切换路由
-      pathname: '/users',
-      query: { page }
-    }));
-  }
   const columns = [
     {
       title: 'Name',
@@ -47,12 +48,12 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
     {
       title: 'Operation',
       key: 'Operation',
-      render: (text, { record } ) => (
+      render: (text, record) => (
         <span className={styles.operation}>
           <UserModal record={record} onOk={editHandler.bind(null, record.id)}>
             <a>Edit</a>
           </UserModal>
-          <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, id)}>
+          <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
             <a href="">Delete</a>
           </Popconfirm>
         </span>
