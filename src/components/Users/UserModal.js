@@ -51,7 +51,7 @@ class UserEditModal extends Component {
 
     return(
       <span>
-        <span onClick={this.showModalHandler}></span>
+        <span onClick={this.showModalHandler}> { children }</span>
         <Modal
           title="Edit User"
           visible={this.state.visible}
@@ -76,7 +76,7 @@ class UserEditModal extends Component {
               {
                 getFieldDecorator('email',{
                   initialValue: email
-                })
+                })(<Input/>)
               }
             </FormItem>
             <FormItem
