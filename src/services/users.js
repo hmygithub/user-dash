@@ -14,3 +14,11 @@ export function remove(id) {
     method: 'DELETE'
   })
 }
+
+//处理用户编辑
+export function patch(id, values) {
+  return request(`/api/users/${id}`,{
+    method: 'PATCH',
+    body: JSON.stringify(values)
+  })
+}
