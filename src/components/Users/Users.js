@@ -11,7 +11,7 @@ function Users({ dispatch, list: dataSource, loading, total, page: current }) {
   }
 
   function pageChangeHandler(page) {
-    dispatch(routerRedux.push({
+    dispatch(routerRedux.push({//切换路由
       pathname: '/users',
       query: { page }
     }));
